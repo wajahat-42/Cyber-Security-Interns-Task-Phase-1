@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management System</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #f5f5f5; }
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+        header { background: #333; color: white; padding: 20px; text-align: center; }
+        nav { background: #444; padding: 10px; text-align: center; }
+        nav a { color: white; text-decoration: none; margin: 0 15px; }
+        nav a:hover { text-decoration: underline; }
+        .content { background: white; padding: 30px; margin-top: 20px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .btn { display: inline-block; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 4px; margin: 5px; }
+        .btn:hover { background: #0056b3; }
+        .alert { padding: 15px; margin: 10px 0; border-radius: 4px; }
+        .alert-info { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+        .alert-warning { background: #fff3cd; color: #856404; border: 1px solid #ffeaa7; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>User Management System</h1>
+        <p>Cybersecurity Internship Project</p>
+    </header>
+    <nav>
+        <a href="/">Home</a>
+        <% if (user) { %>
+            <a href="/profile">Profile</a>
+            <a href="/logout">Logout</a>
+        <% } else { %>
+            <a href="/login">Login</a>
+            <a href="/signup">Sign Up</a>
+        <% } %>
+    </nav>
+    <div class="container">
+        <div class="content">
+            <% if (user) { %>
+                <h2>Welcome, <%= user.username %>!</h2>
+                <div class="alert alert-info">
+                    <p>You are logged in as <strong><%= user.username %></strong></p>
+                    <p>Email: <%= user.email %></p>
+                </div>
+                <a href="/profile" class="btn">View Profile</a>
+                <a href="/logout" class="btn">Logout</a>
+            <% } else { %>
+                <h2>Welcome to User Management System</h2>
+                <div class="alert alert-warning">
+                    <p><strong>Security Notice:</strong> This application contains intentional vulnerabilities for educational purposes.</p>
+                </div>
+                <p>This is a mock application used for cybersecurity training. It includes:</p>
+                <ul style="margin: 20px 0; padding-left: 30px;">
+                    <li>SQL Injection vulnerabilities</li>
+                    <li>Cross-Site Scripting (XSS) vulnerabilities</li>
+                    <li>Weak password storage</li>
+                    <li>Security misconfigurations</li>
+                </ul>
+                <a href="/login" class="btn">Login</a>
+                <a href="/signup" class="btn">Sign Up</a>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>
